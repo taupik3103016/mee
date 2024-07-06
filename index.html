@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Metode Tafsir</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap");
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: white;
+        margin: 0;
+        color: black;
+        position: relative;
+        overflow: hidden;
+      }
+      .wave {
+        font-family: "Orbitron", sans-serif;
+        font-size: 20px;
+        position: relative;
+        display: flex;
+        z-index: 1; /* Make sure text is above the background animation */
+      }
+      .wave span {
+        display: inline-block;
+        margin-right: 5px; /* Adjust spacing between letters */
+        animation: wave-animation 1s infinite;
+        animation-delay: calc(var(--i) * 0.1s);
+      }
+      @keyframes wave-animation {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+      .background-animation {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 200px;
+        height: 200px;
+        transform: translate(-50%, -50%);
+        opacity: 0.2; /* Adjust opacity to blend with background */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wave" id="wave-text">M E T O D E T A F S I R</div>
+    <script>
+      const waveText = document.getElementById("wave-text");
+      const text = waveText.textContent;
+      waveText.innerHTML = "";
+      for (let i = 0; i < text.length; i++) {
+        let span = document.createElement("span");
+        span.textContent = text[i];
+        span.style.setProperty("--i", i);
+        waveText.appendChild(span);
+      }
+    </script>
+  </body>
+</html>
